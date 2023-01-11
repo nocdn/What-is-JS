@@ -1,0 +1,9 @@
+button {
+  margin: 100px;
+  padding: 15px 25px;
+  font-family: sans-serif;
+}
+
+.container {
+  display: flex;
+}
