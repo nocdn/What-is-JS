@@ -413,3 +413,11 @@ console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
 */
 
 // Coding Challenge #4
+
+const bill = 430;
+const tip = bill >= 50 && bill <= 300 ? 0.15 * bill : 0.2 * bill;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value was ${
+    bill + tip
+  }`
+);
