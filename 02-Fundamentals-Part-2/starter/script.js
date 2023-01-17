@@ -37,3 +37,10 @@ const num = Number("23");
 */
 
 // Function Declarations vs. Expressions
+
+// Function declaration
+function calcAge1(birthYear) {
+  return 2037 - birthYear;
+}
+
+const age1 = calcAge1(1991);
