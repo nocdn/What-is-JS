@@ -130,3 +130,7 @@ const checkWinner = function (dolphins, koalas) {
 console.log(checkWinner(avgDolphins, avgKoalas));
 
 */
+
+// Arrays
+
+const friends = ["Michael", "Steven", "Peter"];
