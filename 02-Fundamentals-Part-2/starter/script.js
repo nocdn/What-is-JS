@@ -170,3 +170,6 @@ const ages = [
   calcAge(years[1]),
   calcAge(years[years.length - 1]),
 ];
+console.log(ages);
+
+// Basic Array Operations (Methods)
