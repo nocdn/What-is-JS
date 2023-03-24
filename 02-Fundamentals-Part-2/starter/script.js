@@ -220,3 +220,11 @@ console.log(bills, tips, totals);
 */
 
 // Objects
+
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
