@@ -129,7 +129,6 @@ const checkWinner = function (dolphins, koalas) {
 
 console.log(checkWinner(avgDolphins, avgKoalas));
 
-*/
 
 // Arrays
 
@@ -171,5 +170,11 @@ const ages = [
   calcAge(years[years.length - 1]),
 ];
 console.log(ages);
+*/
 
 // Basic Array Operations (Methods)
+
+const friends = ["Michael", "Steven", "Peter"];
+const newLength = friends.push("Jay");
+console.log(friends);
+console.log(newLength);
