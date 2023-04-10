@@ -270,7 +270,7 @@ console.log(
   `${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`
 );
 
-*/
+
 
 /////////////////////////////// Object Methods
 
@@ -286,12 +286,213 @@ const jonas = {
   //   return 2037 - birthYear;
   // }
 
+  // calcAge: function () {
+  //   console.log(this)
+  //   return 2037 - birthYear;
+  // }
+
   calcAge: function () {
     this.age = 2037 - this.birthYear;
     return this.age;
   },
+
+  getSummmary: function () {
+    return `${this.firstName} is a ${jonas.age}-year old ${
+      jonas.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`;
+  },
 };
 
-console.log(jonas.age());
+console.log(jonas.calcAge());
 
-// console.log(jonas["calcAge"](1991));
+console.log(jonas.age);
+console.log(jonas.age);
+console.log(jonas.age);
+
+// Challenge
+// "Jonas is a 46-year old teacher, and he has a driver's license"
+console.log(jonas.getSummmary());
+
+
+
+////////////////////////////////////////
+// Coding Challenge #3
+
+// BMI = mass / height ** 2
+// or BMI = mass / (height * height)
+
+const mark = {
+  firstName: "Mark",
+  lastName: "Wattney",
+  mass: 78, //kg
+  height: 1.69, //m
+
+  calcBMI: function () {
+    this.BMI = this.mass / (this.height * this.height);
+    return this.BMI;
+  },
+};
+
+const john = {
+  firstName: "John",
+  lastName: "Stanley",
+  mass: 92, //kg
+  height: 1.95, //m
+
+  calcBMI: function () {
+    this.BMI = this.mass / (this.height * this.height);
+    return this.BMI;
+  },
+};
+
+john.calcBMI();
+mark.calcBMI();
+
+if (mark.BMI > john.BMI) {
+  console.log(
+    `Mark's BMI (${mark.BMI}) is higher than John's BMI (${john.BMI})`
+  );
+} else if (john.BMI > mark.BMI) {
+  console.log(
+    `John's BMI (${john.BMI}) is higher than Mark's BMI (${mark.BMI})`
+  );
+} else {
+  console.log("Their BMI is the same!");
+}
+
+
+
+//////////////////////////////
+// LOOPS //
+//////////////////////////////
+
+// for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetitions ${rep}`);
+// }
+
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+const types = [];
+
+for (let i = 0; i < jonasArray.length; i++) {
+  console.log(jonasArray[i], typeof jonasArray[i]);
+
+  // types[i] = typeof jonasArray[i];
+  types.push(typeof jonasArray[i]); //.push add item to the end of the array
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2037 - years[i]);
+}
+
+console.log(ages);
+
+////////// continue and break statements
+
+console.log("--- ONLY STRINGS ---");
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] !== "string") continue;
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+console.log("--- STOP AT NUMBER ---");
+for (let i = 0; i < jonasArray.length; i++) {
+  console.log(jonasArray[i], typeof jonasArray[i]);
+  if (typeof jonasArray[i] === "number") break;
+}
+
+
+
+///////// Looping backwards and forwards
+
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+];
+
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+  console.log(i, jonasArray[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+  console.log(`----- Starting exercise ${exercise}`);
+  for (let rep = 1; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: Rep ${rep}`);
+  }
+}
+
+
+
+////////// While loops
+
+// for loop keeps running while condition is TRUE
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights repetitions ${rep}`);
+// }
+
+let rep = 1;
+while (rep <= 10) {
+  // console.log(`WHILE: Lifting weights: ${rep}`);
+  rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  console.log(`You rolled a ${dice}!`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+  if (dice === 6) console.log("Loop is about to end...");
+}
+
+*/
+
+////////////////////////////////////////
+// Coding Challenge #4
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [];
+let totals = [];
+
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+for (let i = 0; i < bills.length; i++) {
+  let tipAmount = calcTip([bills[i]]);
+  tips.push(tipAmount);
+  totals.push(bills[i] + tipAmount);
+}
+
+console.log("Bills:");
+console.log(bills);
+console.log("Tips:");
+console.log(tips);
+console.log("Totals:");
+console.log(totals);
+
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  console.log(sum);
+  return sum / arr.length;
+};
+
+console.log(`Average:`);
+console.log(calcAverage(totals));
