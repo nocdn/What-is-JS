@@ -43,7 +43,7 @@ console.log(`The maximum temperature is ${maxTemperature}`);
 console.log(`The minimum temperature is ${minTemperature}`);
 console.log(`The amplitude is ${amplitude}`);
 
-*/
+
 
 const measureKelvin = function () {
   const measurement = {
@@ -57,3 +57,21 @@ const measureKelvin = function () {
 };
 
 console.log(measureKelvin());
+
+*/
+
+// Coding Challenge #1
+
+const temperatures1 = [17, 21, 23];
+const temperatures2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let statement = "";
+  for (let i = 0; i < arr.length; i++) {
+    statement += `${arr[i]}°C in ${i + 1} days... `;
+  }
+  return statement;
+};
+
+console.log(printForecast(temperatures1));
+console.log(printForecast(temperatures2));
