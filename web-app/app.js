@@ -1,45 +1,36 @@
-let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
 let timerRef = document.querySelector(".timerDisplay");
-let int = null;
+let startButton = document.getElementById("startTimer");
+
 let isRunning = false;
+let startTime = 0;
+let elapsedTime = 0;
 
-const startButton = document.getElementById("startTimer");
-
-document.getElementById("startTimer").addEventListener("click", () => {
+startButton.addEventListener("click", () => {
   if (!isRunning) {
-    if (int !== null) {
-      resetTimer();
-    }
+    startTime = performance.now() - elapsedTime;
     isRunning = true;
-    int = setInterval(displayTimer, 10);
     startButton.textContent = "Stop";
-    startButton.style.backgroundColor = "red";
-    startButton.style.color = "white";
-    startButton.style.transition = "all 0.5s ease";
+    requestAnimationFrame(updateDisplay);
   } else {
+    elapsedTime = performance.now() - startTime;
     isRunning = false;
-    clearInterval(int);
-    console.log(`Elapsed time: ${timerRef.innerHTML}`);
     startButton.textContent = "Start";
-    startButton.style.backgroundColor = "";
-    startButton.style.color = "";
   }
 });
 
-function displayTimer() {
-  milliseconds += 10;
-  if (milliseconds == 1000) {
-    milliseconds = 0;
-    seconds++;
-    if (seconds == 60) {
-      seconds = 0;
-      minutes++;
-      if (minutes == 60) {
-        minutes = 0;
-        hours++;
-      }
-    }
-  }
+function updateDisplay(timestamp) {
+  if (!isRunning) return;
+
+  elapsedTime = timestamp - startTime;
+  let totalMilliseconds = Math.floor(elapsedTime);
+
+  let milliseconds = totalMilliseconds % 1000;
+  let totalSeconds = Math.floor(totalMilliseconds / 1000);
+  let seconds = totalSeconds % 60;
+  let totalMinutes = Math.floor(totalSeconds / 60);
+  let minutes = totalMinutes % 60;
+  let hours = Math.floor(totalMinutes / 60);
+
   let h = hours < 10 ? "0" + hours : hours;
   let m = minutes < 10 ? "0" + minutes : minutes;
   let s = seconds < 10 ? "0" + seconds : seconds;
@@ -50,10 +41,6 @@ function displayTimer() {
       ? "0" + milliseconds
       : milliseconds;
 
-  timerRef.innerHTML = ` ${h} : ${m} : ${s} : ${ms}`;
-}
-
-function resetTimer() {
-  [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
-  timerRef.innerHTML = "00 : 00 : 00 : 000";
+  timerRef.innerHTML = `${h} : ${m} : ${s} : ${ms}`;
+  requestAnimationFrame(updateDisplay);
 }
