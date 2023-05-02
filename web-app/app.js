@@ -24,6 +24,8 @@ startButton.addEventListener("click", () => {
     startButton.textContent = "Reset";
     startButton.style.backgroundColor = "red";
     startButton.style.color = "white";
+
+    extractingTime();
   } else {
     // Reset timer
     elapsedTime = 0;
@@ -62,3 +64,9 @@ function updateDisplay(timestamp) {
   timerRef.innerHTML = `${h}<span>:</span>${m}<span>:</span>${s}<span>:</span>${ms}`;
   requestAnimationFrame(updateDisplay);
 }
+
+const extractingTime = () => {
+  let timerDisplayText = timerRef.textContent;
+  let timerDisplayArray = timerDisplayText.split(":");
+  console.log(`Elapsed time: ${timerDisplayArray.join(":")}`);
+};
