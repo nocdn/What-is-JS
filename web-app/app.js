@@ -4,17 +4,29 @@ let startButton = document.getElementById("startTimer");
 let isRunning = false;
 let startTime = 0;
 let elapsedTime = 0;
+let clicks = 0;
 
 startButton.addEventListener("click", () => {
-  if (!isRunning) {
+  clicks++;
+
+  if (clicks === 1) {
+    // Start timer
     startTime = performance.now() - elapsedTime;
     isRunning = true;
-    startButton.textContent = "Stop";
+    startButton.textContent = "Pause";
     requestAnimationFrame(updateDisplay);
-  } else {
+  } else if (clicks === 2) {
+    // Pause timer
     elapsedTime = performance.now() - startTime;
     isRunning = false;
+    startButton.textContent = "Reset";
+  } else {
+    // Reset timer
+    elapsedTime = 0;
+    startTime = 0;
+    timerRef.innerHTML = "00<span>:</span>00<span>:</span>00<span>:</span>000";
     startButton.textContent = "Start";
+    clicks = 0;
   }
 });
 
