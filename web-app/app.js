@@ -14,18 +14,24 @@ startButton.addEventListener("click", () => {
     startTime = performance.now() - elapsedTime;
     isRunning = true;
     startButton.textContent = "Pause";
+    startButton.style.backgroundColor = "orange";
+    startButton.style.color = "black";
     requestAnimationFrame(updateDisplay);
   } else if (clicks === 2) {
     // Pause timer
     elapsedTime = performance.now() - startTime;
     isRunning = false;
     startButton.textContent = "Reset";
+    startButton.style.backgroundColor = "red";
+    startButton.style.color = "white";
   } else {
     // Reset timer
     elapsedTime = 0;
     startTime = 0;
     timerRef.innerHTML = "00<span>:</span>00<span>:</span>00<span>:</span>000";
     startButton.textContent = "Start";
+    startButton.style.backgroundColor = "";
+    startButton.style.color = "";
     clicks = 0;
   }
 });

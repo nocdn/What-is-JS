@@ -85,3 +85,7 @@ body {
 .timerDisplay span {
   color: rgba(255, 255, 255, 0.5);
 }
+
+button {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
