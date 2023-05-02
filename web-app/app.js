@@ -41,6 +41,6 @@ function updateDisplay(timestamp) {
       ? "0" + milliseconds
       : milliseconds;
 
-  timerRef.innerHTML = `${h} : ${m} : ${s} : ${ms}`;
+  timerRef.innerHTML = `${h}<span>:</span>${m}<span>:</span>${s}<span>:</span>${ms}`;
   requestAnimationFrame(updateDisplay);
 }
